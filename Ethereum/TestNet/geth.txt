@@ -1,0 +1,9 @@
+# connect to test net.
+geth --testnet --fast --cache=512 console
+
+
+geth console.
+
+net.listening
+net.peerCount
+

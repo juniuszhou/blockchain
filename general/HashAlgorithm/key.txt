@@ -1,0 +1,35 @@
+key.txt
+
+基于公开密钥的加密过程
+
+　　比如有两个用户Alice和Bob，Alice想把一段明文通过双钥加密的技术发送给Bob，Bob有一对公钥和私钥，那么加密解密的过程如下：
+
+Bob将他的公开密钥传送给Alice。
+Alice用Bob的公开密钥加密她的消息，然后传送给Bob。
+Bob用他的私人密钥解密Alice的消息。
+
+
+
+还是Alice和Bob这两个用户，Alice想让Bob知道自己是真实的Alice，而不是假冒的，因此Alice只要使用公钥密码学对文件签名发送 给Bob，Bob使用Alice的公钥对文件进行解密，如果可以解密成功，则证明Alice的私钥是正确的，因而就完成了对Alice的身份鉴别。整个身 份认证的过程如下：
+
+Alice用她的私人密钥对文件加密，从而对文件签名。
+Alice将签名的文件传送给Bob。
+Bob用Alice的公钥解密文件，从而验证签名。
+
+公钥的主要作用：加密；验证签名。
+私钥的主要作用：签名；解密。
+
+public key for encrpt.
+1. a send its public key to b.
+2. b use it to encrpt file and send to a
+3. a can use its private key to decrpt.
+no worry other people can get the content, just a has private key
+
+private key for signature
+1. a use its private key to encrpt file for signature
+2. a publish its public key
+3. b can use public key to decrpt file content in signature
+4. then b can verify a 's identity
+
+
+数字证书中包含什么呢?数字证书中包含了银行的公钥

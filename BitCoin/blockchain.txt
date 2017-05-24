@@ -1,0 +1,15 @@
+
+只有80字节的区块头会被计算到POW的哈希中，因此添加更多的交易信息不会降低伴有额外I／O的哈希计算速度.
+
+比特币网络使用储存在2016个区块头的时间戳的差值来计算下一轮的难度。
+
+当前区块的高度--就是当前区块到第一个块(genesis block)的差值.
+
+两个或两个以上的矿工几乎在同一时间创建了一个区块的情况下是很常见,节点通常选择相信他们接收到的第一个块
+
+
+第一个交易记录必须是coinbase（币基）记录，这个记录包含了区块奖励和本区块的所有的交易费
+
+## each block include the transaction 's number is about 2000.
+if signature removed according to seg wit, the can include 3000 --- 4000.
+

@@ -1,0 +1,14 @@
+152_CompactBlockRelay.txt
+
+https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki#sendcmpct
+
+
+Historically, the Bitcoin P2P protocol has not been very bandwidth efficient for block relay. Every transaction in a block is included when relayed, even though a large number of the transactions in a given block are already available to nodes before the block is relayed. 
+
+sendcmpct
+cmpctblock
+MSG_CMPCT_BLOCK
+
+getblocktxn
+blocktxn
+

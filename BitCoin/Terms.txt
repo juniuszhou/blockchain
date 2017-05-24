@@ -1,0 +1,25 @@
+Terms.txt
+
+TXID transaction id.
+
+Script, bitcoin use script for transaction. it is simple, stack based running
+system. process from left to right. not Turing complete, no loop.
+
+opcodes, commands and function.
+opcode is similar to instruction or opcode in CPU.
+via define opcodes, the same thing can happen in different node.
+the consistence can be achieved.
+
+in scripts, there are lots of opcodes such push data into stack.
+add operation, xor operation, if branch operation and so on.
+but there is no loop. 
+
+nBits alias to target also for difficult. 
+
+BIP bitcoin improvement
+
+UTXO unspent transaction output
+
+
+
+

@@ -1,0 +1,5 @@
+https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki
+
+SPV client need download all blocks and throw the content just remain
+header. it waste lots of bandwidth especially in cell phone.
+

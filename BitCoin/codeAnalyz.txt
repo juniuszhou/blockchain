@@ -1,0 +1,27 @@
+# important link
+https://bitcoin.org/en/developer-reference
+
+
+Boost signals2 usage.
+signals2基于Boost的另一个库signals，实现了线程安全的观察者模式。在signals2库中，观察者模式被称为信号/插槽(signals and slots)，他是一种函数回调机制，一个信号关联了多个插槽，当信号发出时，所有关联它的插槽都会被调用。
+
+
+level db, google open source key value database in single node.
+
+
+Berkeley DB
+Berkeley DB是一个开源的文件数据库，介于关系数据库与内存数据库之间，使用方式与内存数据库类似，它提供的是一系列直接访问数据库的函数，而不是像关系数据库那样需要网络通讯、SQL解析等步骤。
+
+Berkeley DB is a family of embedded key-value database libraries providing scalable high-performance data management services to applications. The Berkeley DB products use simple function-call APIs for data access and management.
+
+There are 3 implementations of Oracle Berkeley DB:
+
+
+Oracle Berkeley DB - implemented in C
+Oracle Berkeley JE - implemented in Java
+Oracle Berkeley XML - implemented in C++
+
+
+
+
+

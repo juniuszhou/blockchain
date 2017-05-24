@@ -1,0 +1,32 @@
+Concept.txt
+
+## EVM ethereum virtual machine.
+contract implemented as a code, it is run at the platform of EVM.
+EVM like other system like JVM or virtual machine used in sql db.
+
+## Gas and Fees
+bandwidth, storage and computation all should be taken into account
+to compute fee.
+
+## Uncle incentivization
+Greedy Heaviest Observed Subtree" (GHOST) protocol 
+
+issue: to prevent low power miner always genereate stale block.
+and stale block dropped by network.
+
+solution: also give 1/8 fee to miner which stale block
+and block also involved in the chain computing.
+
+including stale blocks in the calculation of which chain is the "longest
+
+
+## RLP is intended to be a highly minimalistic serialization format
+RLP recursive length prefix.
+
+## 
+ethereum may have replay attack because it based on account.
+the nouce in worldstate can avoid the attack. 
+no replay attack for bitcoin, it just include UTXO.
+
+# world state
+nounce  the auto increment number for replay attack.

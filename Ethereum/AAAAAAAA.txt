@@ -1,0 +1,19 @@
+AAAAAAAA.txt
+
+https://ethereum.gitbooks.io/frontier-guide/content/index.html
+
+https://github.com/ethereum/wiki/wiki/White-Paper
+
+
+
+# eth and etc difference.
+eth  etherchain.org
+https://github.com/ethereum
+
+etc  etcchain.com
+https://github.com/ethereumproject
+
+
+
+
+

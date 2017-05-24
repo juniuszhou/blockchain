@@ -1,0 +1,5 @@
+TestChain.txt
+
+http://ethfans.org/posts/ethereum-private-network-bootstrap
+
+

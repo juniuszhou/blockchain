@@ -1,0 +1,45 @@
+目前主要有四大类共识机制：Pow、Pos、DPos、Pool
+1、Pow工作量证明，就是大家熟悉的挖矿，通过与或运算，计算出一个满足规则的随机数，即获得本次记账权，发出本轮需要记录的数据，全网其它节点验证后一起存储；
+优点：完全去中心化，节点自由进出；
+缺点：目前bitcoin已经吸引全球大部分的算力，其它再用Pow共识机制的区块链应用很难获得相同的算力来保障自身的安全；挖矿造成大量的资源浪费；共识达成的周期较长，不适合商业应用
+
+2、Pos权益证明，Pow的一种升级共识机制；根据每个节点所占代币的比例和时间；等比例的降低挖矿难度，从而加快找随机数的速度。
+优点：在一定程度上缩短了共识达成的时间
+缺点：还是需要挖矿，本质上没有解决商业应用的痛点
+
+3、DPos股份授权证明机制，类似于董事会投票，持币者投出一定数量的节点，代理他们进行验证和记账。
+优点：大幅缩小参与验证和记账节点的数量，可以达到秒级的共识验证
+缺点：整个共识机制还是依赖于代币，很多商业应用是不需要代币存在的
+
+4、Pool验证池，基于传统的分布式一致性技术，加上数据验证机制；是目前行业链大范围在使用的共识机制
+优点：不需要代币也可以工作，在成熟的分布式一致性算法（Pasox、Raft）基础上，实现秒级共识验证；
+缺点：去中心化程度不如bictoin；更适合多方参与的多中心商业模式
+ 
+在使用共识机制，保证数据一致性时的巨大优势（共识机制则是Ripple首先提出的，数据正确性优先的网络交易同步机制，在共识网络中，无论软件代码怎么变动，无法取得共识就无法进入网络，更不要提分叉了）
+
+
+
+BTC bitcoin
+
+
+
+
+
+## colored coins
+While originally designed to be a currency, Bitcoin supports a limited scripting language that can be used to store metadata on the blockchain. Colored Coins is a concept that allows attaching metadata to Bitcoin transactions and leveraging the Bitcoin infrastructure for issuing and trading immutable digital assets that can represent real world value. The value of such digital assets is tied to a real-world promise by the asset issuers that they are willing to redeem those digital tokens for something of value in the real world.
+
+Digital assets on top of the Bitcoin Blockchain can be used to issue Financial assets (securities like shares, commodities like Gold or new currencies), prove ownership (A digital key to a house or a car, a concert ticket), store information (Documents, Certificates) or create smart contracts.
+
+The advantage given by using the blockchain as the backbone for such asset manipulation is that one can rely on the blockchain’s transparency, immutability, ease of transfer and non-counterfeitability to transfer and trade such digital tokens with unprecedented security and ease.
+
+彩色币是一种建立在比特币数据块上的高级衍生应用协议。
+彩色币本身就是比特币，存储和转移不需要第三方，可以利用已经存在的比特币的基础，因此彩色币可以为现实世界中难以通过传统方法去中心化的事物铺平道路。
+
+
+
+sidechain.  major developer   http://www.blockstream.com/.
+
+侧链是由比特币通过比特币合约支持的新型区块链，就像由金条支持的美元英镑一样。原则上，你可以有成千上万个“挂”到比特币上的侧链，特性和目的各不相同……所有这些侧链依赖于比特币主区块链保障的弹性和稀缺性，一旦经过尝试和测试，反过来又能重复验证侧链的功能。
+
+楔入式侧链技术（ pegged sidechains），它将实现比特币和其他数字资产在多个区块链间的转移，这就意味着用户们在使用他们已有资产的情况下，就可以访问新的加密货币系统。目前，侧链技术主要是由Blockstream公司负责开发。
+

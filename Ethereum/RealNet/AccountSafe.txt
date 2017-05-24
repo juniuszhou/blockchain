@@ -1,0 +1,6 @@
+AccountSafe.txt
+
+备份
+备份keystore文件即可。如果账户里有大额以太币，建议离线存储，将keystore文件移走，保存在U盘中。打算进行转账时，将keystore文件移回到原位置即可。
+
+

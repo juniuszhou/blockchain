@@ -1,0 +1,13 @@
+Witness.txt
+
+# run witness.
+/home/junius/blockchain/graphene/programs/witness_node/witness_node --rpc-endpoint 127.0.0.1:8090 
+
+# test again witness
+wscat -c ws://127.0.0.1:8090
+> {"id":1, "method":"call", "params":[0,"get_accounts",[["1.2.0"]]]}
+
+curl --data '{"jsonrpc": "2.0", "method": "call", "params": [0, "get_accounts", [["1.2.0"]]], "id": 1}' http://127.0.0.1:8090/rpc
+
+# run wallet.
+/home/junius/blockchain/graphene/programs/cli_wallet/cli_wallet

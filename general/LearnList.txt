@@ -1,0 +1,10 @@
+LearnList.txt
+
+1. transaction type. 
+p2pkh, p2sh
+sequence number, lock time.
+
+
+
+zcash, rootstock. segwit
+schedlling coin

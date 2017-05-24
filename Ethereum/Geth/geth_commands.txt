@@ -1,0 +1,13 @@
+## list account
+geth account list
+
+
+
+
+## start console.
+
+
+
+
+# geth upgradedb   //update block format.
+# geth removedb   // remove all data of block

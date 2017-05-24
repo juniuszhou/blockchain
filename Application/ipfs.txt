@@ -1,0 +1,23 @@
+ipfs.txt
+
+https://github.com/ipfs/go-ipfs
+
+## compile 
+Download and Compile IPFS
+
+go-ipfs differs from the vanilla go get flow: it uses gx/gx-go for dependency management.
+
+First download go-ipfs without installing:
+
+$ go get -u -d github.com/ipfs/go-ipfs
+
+$ cd $GOPATH/src/github.com/ipfs/go-ipfs
+Then install go-ipfs and its dependencies, including gx and gx-go:
+
+$ make install
+
+
+
+# command
+junius@jun-laptop:~$ ipfs init
+

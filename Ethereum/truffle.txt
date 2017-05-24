@@ -1,0 +1,16 @@
+truffle.txt
+
+npm install -g ethereumjs-testrpc
+npm install -g truffle
+
+## generate a new project
+truffle init
+
+## compile
+truffle compile
+
+## deploy
+truffle deploy / migrate
+
+## start ,  need start testrpc before.
+truffle serve. then truffle start at 8080 port.

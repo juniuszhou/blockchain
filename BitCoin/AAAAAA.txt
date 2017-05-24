@@ -1,0 +1,11 @@
+### Current location of https://bitcoin.org/en/developer-reference
+for chinese version.
+http://book.8btc.com/books/6/bitcoin-developer-guide/_book/
+
+
+transaction OpCodes.
+
+## video for blockchain.
+pan.baidu.com/s/1bp04tiv
+
+

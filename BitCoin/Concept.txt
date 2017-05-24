@@ -1,0 +1,48 @@
+https://www.zhihu.com/question/38878027/answer/78888626
+https://github.com/philsong/bitcoinbook
+https://github.com/philsong/bitcoin-reading-list
+
+# four major technology for bitcoin.
+一个去中心化的点对点网络(比特币协议)
+一个公共的交易账簿(区块链)
+一个去中心化的数学的和确定性的货币发行(分布式挖矿)
+一个去中心化的交易验证系统(交易脚本)
+
+## concepts
+Height:  block number.
+Age: how many time ago generated.
+Size: must be less than 1M.
+Block: storage unit to store all transactions happened in last 10 minutes.
+Transaction: can include multiple input / output.
+
+Serialize: important for write transaction record into block and read data from block.
+
+# Hash just compute from header include 
+version, prev_block_hash, merkle_root_hash, time, bits  hardness,   nonce.
+a misconcept is hash from whole block.
+
+# SPV simple payment verification
+SPV node.
+
+bloom filter.
+
+
+qukuai.com/pools  show the global computing capability.
+bitcoinfees.21.co  show unconfirmed transaction and its fee.
+
+depth 0, status is pending
+depth 1-n  building
+
+
+# unit
+1比特币（Bitcoins，BTC）  
+
+0.01比特分（Bitcent，cBTC）
+
+0.001毫比特（Milli-Bitcoins，mBTC）
+
+0.000001微比特（Micro-Bitcoins，μBTC或uBTC） 
+
+0.00000001聪（satoshi）（基本单位） 
+
+Standard Transaction

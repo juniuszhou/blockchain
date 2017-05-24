@@ -1,0 +1,5 @@
+geth.txt
+
+1. run fast and thin client.
+geth --fast --cache=512 console
+

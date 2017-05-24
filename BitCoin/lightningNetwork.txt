@@ -1,0 +1,9 @@
+https://www.zhihu.com/question/46515457
+
+RSMC recoverable sequence maturity contract 准备金机制
+
+
+
+HTLC hashed timelock contract  限时转账
+
+

@@ -1,0 +1,7 @@
+types of signature
+1. all,  encrypt input output and lockTime
+2. none, just encrypt input and lockTime
+3. single, all input and one output and lockTime.
+4 anyOneCanPay, just for input.
+
+signature is a outcome of encrpyt the data via your private key.

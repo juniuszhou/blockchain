@@ -1,0 +1,28 @@
+## start geth client.
+ geth --dev console 2 > eth.log   // start console for dev environment
+
+# level one command
+eth / personal / admin / net / 
+
+
+## personal
+personal.newAccount('123456')  //new account with password  		"0x033402098f9b7acc363f514c2a3d92c0bc9bd8a0"
+
+personal.unlockAccount(addr, passwd, duration) // unlock account for transaction
+
+
+## eth
+eth.blockNumver    // get current block number
+eth.getBalance("0x033402098f9b7acc363f514c2a3d92c0bc9bd8a0")
+
+eth.accounts
+
+eth.sendTransaction({from: '0x036a03fc47084741f83938296a1c8ef67f6e34fa', to: '0x893608751d68d046e85802926673cdf2f57f7cb8', value: web3.toWei(1, "ether")})
+// transaction.  注意，一定要在地址前面加上0x前缀。
+
+
+
+
+
+
+

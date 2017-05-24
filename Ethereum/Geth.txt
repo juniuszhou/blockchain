@@ -1,0 +1,23 @@
+geth 
+
+# list account
+geth account list
+Account #0: {615f70a4cc63c3e54ef1a78a621334da5bf197db} /home/junius/.ethereum/keystore/UTC--2016-11-27T00-33-07.545838724Z--615f70a4cc63c3e54ef1a78a621334da5bf197db
+
+备份
+备份keystore文件即可。如果账户里有大额以太币，建议离线存储，将keystore文件移走，保存在U盘中。打算进行转账时，将keystore文件移回到原位置即可。
+
+
+#### geth console
+
+## unlock account
+personal.unlockAccount(addr, passwd, duration)
+
+
+## transaction.  注意，一定要在地址前面加上0x前缀。
+
+eth.sendTransaction({from: '0x036a03fc47084741f83938296a1c8ef67f6e34fa', to: '0x893608751d68d046e85802926673cdf2f57f7cb8', value: web3.toWei(1, "ether")})
+
+## fast and light mode.
+light similar to spv in bitcoin.
+

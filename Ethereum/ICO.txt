@@ -1,0 +1,10 @@
+erc 20 for ico standard.
+https://github.com/ethereum/eips/issues/20 
+
+# ico based on etheruem.
+consensys/tokens  https://github.com/consensys/tokens
+
+#
+there is also an ico example in ethereum official website.
+
+

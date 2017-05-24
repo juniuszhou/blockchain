@@ -1,0 +1,31 @@
+钱包里面没有存放比特币！比特币永远存在于账单（区块链）上，钱包里面保存的是用户的私钥。
+导入新的私钥，或者生成新的私钥后，钱包文件会发生变化，即新增私钥。
+花费比特币后，QT客户端会自动生成新私钥。
+
+1 BTC = 一亿 satoshi
+
+both private and public key should be 256 bits.
+and 64 long if format as 0x.
+
+# private key example.
+1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD
+# real bitcoin address or public key
+02a406624211f2abbdc68da3df929f938c3399dd79fac1b51b0e4ad1d26a47aa
+base 58 
+1PRTTaJesdNovgne6Ehcdu1fpEdX7913CK
+1 PRTTaJesdNovgne6Ehcdu1fpEdX79 13CK
+
+
+HD帐号通过一个种子生成n个私钥，只要备份好这个种子，就等于备份好所有私钥。
+
+/usr/include/db_cxx.h
+
+
+
+## how to generate private key, public key and address.
+get a 256 bits random string. in bitcoin. 128 bits from open ssl lib.
+128 bits from os random. and put them together.
+
+then get public key via ellicse function via private key.
+then hash 160  to compute public key to generate address.
+then use base58 to get a format which is easier to remember.

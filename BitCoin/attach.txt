@@ -1,0 +1,6 @@
+attach.txt
+
+1. access to website backend and steal the private key.
+2. double spending.
+3. 
+

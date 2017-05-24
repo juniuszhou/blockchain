@@ -1,0 +1,156 @@
+Data structure for transaction.
+version + inputs + outputs + locktime
+
+input = referred txid + signature script and public key
+output = pubkey script.
+交易类型是指输出的交易类型,或者说是脚本类型.
+
+
+steps for transaction:
+1. create and signature of owner of UTXO
+2. broadcast, verify and broadcast
+3. received by most of nodes
+4. mined and record in block.
+
+Coinbase交易, payment for miner who package the block.
+Coinbase交易 no input, just output.
+
+
+
+
+# data for one transaction.
+version inputs outputs locktime
+
+# how to get all UNXO for an address. website like blockchain provide
+such query support via REST api.
+curl https://blockchain.info/unspent?active=1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK
+
+
+
+p2pkh 就是支付给一个地址，我们通过给一个脚本，unlock script要求对方只有给出签名和public key。
+对方只有在lock script中给出才能狗验证成功。
+
+Pay-To-Public-Key-Hash (P2PKH) most common transaction type
+
+01000000 ................................... Version
+
+01 ......................................... Number of inputs
+|
+| 7b1eabe0209b1fe794124575ef807057
+| c77ada2138ae4fa8d6c4de0398a14f3f ......... Outpoint TXID
+| 00000000 ................................. Outpoint index number
+|
+| 49 ....................................... Bytes in sig. script: 73
+| | 48 ..................................... Push 72 bytes as data
+| | | 30450221008949f0cb400094ad2b5eb3
+| | | 99d59d01c14d73d8fe6e96df1a7150de
+| | | b388ab8935022079656090d7f6bac4c9
+| | | a94e0aad311a4268e082a725f8aeae05
+| | | 73fb12ff866a5f01 ..................... Secp256k1 signature
+|
+| ffffffff ................................. Sequence number: UINT32_MAX
+
+01 ......................................... Number of outputs
+| f0ca052a01000000 ......................... Satoshis (49.99990000 BTC)
+|
+| 19 ....................................... Bytes in pubkey script: 25
+| | 76 ..................................... OP_DUP
+| | a9 ..................................... OP_HASH160
+| | 14 ..................................... Push 20 bytes as data
+| | | cbc20a7664f2f69e5355aa427045bc15
+| | | e7c6c772 ............................. PubKey hash
+| | 88 ..................................... OP_EQUALVERIFY
+| | ac ..................................... OP_CHECKSIG
+
+00000000 ................................... locktime: 0 (a block height)
+
+## transaction scripts.
+1. lock script,  scriptSig include signature and public key.
+2. unlock script, scriptPubKey, include bitcoin address.
+   some hash function and equal check signature check.
+
+verification procedure.
+1. the lock script go to stack.
+2. to hash public key then compare with bitcoin address.
+3. then check the signature if it is valid.
+
+
+public key hash :  hash160(public key)
+pubkey script: 
+     op_dup, op_hash160, public key hash, op_equal, op_checksig
+
+
+Pay-to-PubKey (P2PK) very simple and used for coinbase transation.
+1. lock script just include the public key and check sig operation.
+2. unlock script just include the signature
+
+pay-to-script-hash (P2SH) transactions 
+接收着产生一个脚本，并把这个脚本的hash发给支付比特币的人。
+支付者把这个Hash放在output中，当接收者以后要用这些比特币的时候。
+需要提供这个脚本，验证脚本的Hash。
+
+script: OP_HASH160 <redeemscripthash> OP_EQUAL
+scriptSig: <sig> [sig] [sig...] <redeemscript>
+
+script: <m> <pubkey> [pubkey] [pubkey...] <n> OP_CHECKMULTISIG
+scriptSig: OP_0 <sig> [sig] [sig...]
+
+script: OP_HASH160 <redeemscripthash> OP_EQUAL
+redeemScript: <OP_2> <pubkey> <pubkey> <pubkey> <OP_3> OP_CHECKMULTISIG
+scriptSig: OP_0 <sig> <sig> <redeemscript>
+
+redeem script 's execution result must be true.
+input contain source script, output contain hash.
+if use multiple signature, the transaction script may very long.
+so we need to reduce the size of transaction.
+to implement multi signature.
+
+Signature: just use the private key to encrpt the transaction data.
+sighash_all,  input + output + nLockTime
+
+
+
+## sequence number & lock time
+> 0.5 billion,  means time
+< 0.5 billion, block height
+#ffffffff lock time invalid
+
+sequence number
+
+
+# to understand 
+http://www.8btc.com/transaction_coin_tech
+
+# one misconcept.
+一个对比特币交易的常见误解是它们必须要等10分钟后被确认加进一个新区块,或等60分钟以得到六次确认后才
+是有效的。虽然这些确认可以确保交易已被整个网络接受,但对于像一杯咖啡这样的小额商品来说就没有必要等
+待那么长时间了。一个商家可以免确认来接受比特币小额支付。这样做的风险不比接受一个不是用有效身份证领
+取或没有签名的信用卡的风险更大,而后者是现在商家常做的事情
+
+
+
+# how to verify.
+全索引客户端可以追钱款的来
+源,从第一次有比特币在区块里生成的那一刻开始,按交易与交易间的关系顺藤摸瓜,直到Bob的交易地址。轻量级客
+户端通过确认一个交易在区块链中且在它后面有几个新区块来确认一个支付的合法性。这种方式叫做简易支付验证
+
+
+####  交易费
+交易费基于交易的尺寸,用千字节来计算,而不是比特币的价值。
+目前最小交易费被固定在每千字
+节0.0001比特币,或者说是每千字节万分之一比特币
+if a transactions include lots of input or output, it will make the 
+transaction very long, too many bytes. the outcome is you must pany
+much more for miner.
+
+##  交易链条和孤立交易
+
+
+####   时间锁定
+所有哈希类型的签名标志是交易的时间锁定。该时间锁定表示最早被添加到区块链的交易。
+
+时间锁定此功能允许签署者们创建一个只在未来生效且锁定时间的交易，给签署者们一个改变主意的机会。
+
+如果任一签署者改变主意了，他们能创建一个没有时间锁定的交易。新的交易将使用一个作为输入，一个作为输出，相同的输出作为输入的时间锁定交易。这使得如果新的交易在锁定时间生效前被添加到区块链中，那该交易将失效。
+
+在时间锁定生效前必须小心。对等网络允许区块时间比实际快2小时，所以一个时间锁定的交易能在交易正式生效2小时前被添加到区块链。同时，区块不能创建一个被认可的区间，所以任何人试图取消一个有效的交易,都应在时间锁定生效前几个小时实施。

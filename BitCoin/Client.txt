@@ -1,0 +1,10 @@
+Client.txt
+
+
+1. thick or complete client. 完整节点
+
+2. SPV simple payment verification client. 简捷支付验证
+spv just download header of block.
+spv download transation if necessary.
+SPV通过布鲁姆过滤器(Bloom filters )执行块的发现
+

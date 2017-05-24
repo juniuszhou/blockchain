@@ -1,0 +1,29 @@
+SegregratedWitness.txt
+
+soft fork.
+
+bitcoin support seg wit since version 0.13.1
+
+
+
+bitcoin unlimited.
+https://github.com/BitcoinUnlimited/BitcoinUnlimited
+
+
+seg wit
+1. witness data structure
+2. txid and wtxid.
+
+
+#### two new transaction types.
+p2wpkh
+pay to witness public key hash
+
+p2wsh
+pay to witness script hash
+
+
+# to malle malleability, we just comput txid without involve the
+signature, that is enough. 
+but seg wit seperate the signature from tx.
+

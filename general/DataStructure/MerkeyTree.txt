@@ -1,0 +1,38 @@
+Merkle树的叶子是数据块(例如，文件或者文件的集合)的hash值。非叶节点是其对应子节点串联字符串的hash。
+把相邻的两个哈希合并成一个字符串，然后运算这个字符串的哈希，这样每两个哈希就结婚生子，得到了一个”子哈希“。
+
+Merkle Tree的插入和删除操作其实是一个工程上的问题，不同问题会有不同的插入方法。如果要确保树是平衡的或者是树高是log(n)的，可以用任何的标准的平衡二叉树的模式，如AVL树，红黑树，伸展树，2-3树等。这些平衡二叉树的更新模式可以在O(lgn)时间内完成插入操作，并且能保证树高是O(lgn)的。那么很容易可以看出更新所有的Merkle Hash可以在O((lgn)2)时间内完成（对于每个节点如要更新从它到树根O(lgn)个节点，而为了满足树高的要求需要更新O(lgn)个节点）。如果仔细分析的话，更新所有的hash实际上可以在O(lgn)时间内完成，因为要改变的所有节点都是相关联的，即他们要不是都在从某个叶节点到树根的一条路径上，或者这种情况相近。
+
+　　[6]的回答者说实际上Merkle Tree的结构(是否平衡，树高限制多少)在大多数应用中并不重要，而且保持数据块的顺序也在大多数应用中也不需要。因此，可以根据具体应用的情况，设计自己的插入和删除操作。一个通用的Merkle Tree插入删除操作是没有意义的。
+
+
+merkle tree is a binary or multi branch tree.
+each node contains one hash for some data.
+and parent node contrains all sub data 's hash.
+so it is used to compare from whole to sub-part recursively.
+
+# if the nodes number is not the 2^n.
+then some node will be repeated to compute merkle tree 's hash
+
+                    A               A
+                  /  \            /   \
+                B     C         B       C
+               / \    |        / \     / \
+              D   E   F       D   E   F   F
+             / \ / \ / \     / \ / \ / \ / \
+             1 2 3 4 5 6     1 2 3 4 5 6 5 6
+
+
+Merkle tree doesn't include the real data. for bitcoin, it means
+transaction. 
+
+its application in bitcoin. 
+spv node just download head info, bloom filter.
+
+
+# how to use merkle tree. for instance p2p file sharing. just
+one block data corrupted.
+we get the merkle tree first. then download all data blocks.
+if download done, we compare merkle root. if root not the same.
+then we compare its left and right node hash until find the exact
+block. log(n) complexity is enough.

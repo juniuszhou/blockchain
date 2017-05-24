@@ -1,0 +1,100 @@
+Network.txt
+
+比特币P2P协议
+Stratum协议
+
+1. node type and four core functions
+routing, blockchain database, mining and wallet.
+每个节点都参与全网络的路由功能,参与验证并传播交易及区块信息,
+维持与对等节点的连接.
+
+core node:  include all four functions.
+full node: include all blockchain database and routing, and verify self.
+spv: just wallet and routing.
+miner: routing, blockchain database, mining
+
+mine protocol server: pool server and stratum server
+miner node. miner and stratum 
+
+
+2. 
+BitcoinJ、Libbitcoin、btcd
+
+3. tcp port 8333 
+seed node 
+
+two types message
+data message and control message
+
+control message help the control connection between two peers.
+
+message format.
+each message include the message header and payload.
+payload is optional according to header type.
+
+1. example of message header.
+f9beb4d9 ................... Start string: Mainnet / testnet / regnet.
+76657261636b000000000000 ... Command name: verack + null padding
+00000000 ................... Byte count: 0   / size of payload.
+5df6e0e2 ................... Checksum: SHA256(SHA256(<empty>))
+
+2. payload or message content example.
+   4 byte,  type identifier  
+   32 byte,  hash
+
+block: transmit a single serialized block 
+getblock
+
+## the unique resource identity for block or transation.
+inventory: A data type identifier and a hash; used to identify transactions and blocks available for download
+CInv(int typeIn, const uint256& hashIn); 
+
+Message type.
+enum GetDataMsg
+{
+    UNDEFINED = 0,
+    MSG_TX = 1,
+    MSG_BLOCK = 2,
+    // The following can only occur in getdata. Invs always use TX or BLOCK.
+    MSG_FILTERED_BLOCK = 3,  //!< Defined in BIP37
+    MSG_CMPCT_BLOCK = 4,     //!< Defined in BIP152
+    MSG_WITNESS_BLOCK = MSG_BLOCK | MSG_WITNESS_FLAG, //!< Defined in BIP144
+    MSG_WITNESS_TX = MSG_TX | MSG_WITNESS_FLAG,       //!< Defined in BIP144
+    MSG_FILTERED_WITNESS_BLOCK = MSG_FILTERED_BLOCK | MSG_WITNESS_FLAG,
+};
+
+
+## all network control related message type.
+namespace NetMsgType {
+const char *VERSION="version";
+const char *VERACK="verack";
+const char *ADDR="addr";
+const char *INV="inv";
+const char *GETDATA="getdata";
+const char *MERKLEBLOCK="merkleblock";
+const char *GETBLOCKS="getblocks";
+const char *GETHEADERS="getheaders";
+const char *TX="tx";
+const char *HEADERS="headers";
+const char *BLOCK="block";
+const char *GETADDR="getaddr";
+const char *MEMPOOL="mempool";
+const char *PING="ping";
+const char *PONG="pong";
+const char *NOTFOUND="notfound";
+const char *FILTERLOAD="filterload";
+const char *FILTERADD="filteradd";
+const char *FILTERCLEAR="filterclear";
+const char *REJECT="reject";
+const char *SENDHEADERS="sendheaders";
+const char *FEEFILTER="feefilter";
+const char *SENDCMPCT="sendcmpct";
+const char *CMPCTBLOCK="cmpctblock";
+const char *GETBLOCKTXN="getblocktxn";
+const char *BLOCKTXN="blocktxn";
+};
+
+
+# other obsolete message.
+alert, send by developer or other respected member with their 
+signature to inform some problems in your node.

@@ -1,0 +1,3 @@
+testrpc.txt
+testrpc是在本地使用内存模拟的一个以太坊环境.
+

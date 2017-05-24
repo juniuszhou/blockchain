@@ -1,0 +1,8 @@
+Mist.txt
+
+$ git clone https://github.com/ethereum/mist.git
+$ cd mist
+$ yarn
+
+cd mist/interface && meteor --no-release-check
+

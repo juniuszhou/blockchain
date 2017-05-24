@@ -1,0 +1,47 @@
+## base 58
+/** All alphanumeric characters except for "0", "I", "O", and "l" */
+Base58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+
+
+/** Message header.
+ * (4) message start.
+ * (12) command.
+ * (4) size.
+ * (4) checksum.
+ */
+
+ ## block header 80 bytes
+ 1. version to indicate block validation rule. current value is 4.
+ 2. previous block header hash
+ 3. merkle root hash
+ 4. time
+ 5. nBits  nbits is current network difficulty
+	Difficulty encoding is throughly described here.
+
+Hexadecimal representation like 0x1b3cc366 consists of two parts:
+
+0x1b -- number of bytes in a target
+0x3cc366 -- target prefix
+This means that valid hash should be less than 0x3cc366000000000000000000000000000000000000000000000000 (it is exactly 0x1b = 27 bytes long).
+
+Floating point representation of difficulty shows how much current target is harder than the one used in the genesis block.
+
+Satoshi decided to use 0x1d00ffff as a difficulty for the genesis block, so the target was 0x00ffff0000000000000000000000000000000000000000000000000000.
+
+And 1078.52975077 is how much current target is greater than the initial one:
+
+$ echo 'ibase=16;FFFF0000000000000000000000000000000000000000000000000000 / 3CC366000000000000000000000000000000000000000000000000' | bc -l
+1078.52975077482646448605
+
+Difficulty is simply the ratio between the max target and the current target. It's easier to speak in terms of difficulty than in terms of the target.
+
+The max target is (2^16 - 1) * 2^208 or approximately 2^224. A random hash has a chance of about 2^(-32) to be lower than the max target.
+
+It follows that if the difficulty is D, it takes on average 2^32 * D hashes to find a block.
+
+难度值 = 最大目标值 / 当前目标值
+
+6. nonce 
+miner need change it to get new header 's hash. then it is possible to 
+generate the hash just less than nBits and generate a new candidate block.
+

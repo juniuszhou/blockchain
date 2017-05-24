@@ -1,0 +1,18 @@
+PatriciaTrie.txt
+
+如果一颗Trie中有很多单词只有一个儿子结点，可以用Patricia Trie（Linux内核中叫做Radix Tree）压缩存储。
+
+much easier for update.
+
+ethereum account include balance, nounce, 
+
+Radix tree. alias for trie tree.
+
+rlp recursive length prefix.  https://github.com/ethereum/wiki/wiki/rlp
+
+Hex prefix encoding
+use rlp to encode key to Hex type value.
+
+
+if the value 's length more than 32 bytes. the data stored in level db.
+and patricia tree just store the hash.
