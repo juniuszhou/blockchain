@@ -1,0 +1,22 @@
+zcashTransaction.txt
+
+Note1=(pk1, r1)  // public key and random value
+H1 = Hash(Note1)  // then H1 will stored in zcash chain.
+
+pi is string. include public key and r1.
+
+pi used to proof of the control of note1
+miner can use public key and r1 can generate H1.
+miner can use your private key to verify public key.
+r1 is nullifer
+
+put Hash(r1) into nullifier set. means the utxo was spend.
+
+the sender must know the public key of receiver for transaction.
+zero knowledge just means the miner don't know the receiver and sender.
+
+alice send coin to bob.
+1. alice get the public key of bob and generate a random value.
+2. alice send random value and public key to bob via private channel.
+3. alice send nullifier to miner about the H1.
+4. alice ask to add a new utxo Hash.

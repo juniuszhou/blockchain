@@ -1,0 +1,6 @@
+NetSpce.txt
+
+ethereum natural specification format.
+
+like javadoc or doxygen. to generate document based on comments in code.
+

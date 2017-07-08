@@ -1,0 +1,53 @@
+Storage.txt
+1. memory memory存储位置同我们普通程序的内存一致。即分配，即使用，越过作用域即不可被访问，等待被回收。
+2. storage 数据将永远存在, like store into disc. instead it is blockchain.
+3. calldata. just for function parameter, it is just readable. like constant.
+
+强制的数据位置(Forced data location)
+
+外部函数(External function)的参数(不包括返回参数)强制为：calldata
+状态变量(State variables)强制为: storage
+默认数据位置（Default data location）
+
+函数参数（括返回参数：memory
+所有其它的局部变量：storage
+
+memory之间是引用传递，并不会拷贝数据。
+
+####  变量如何占用内存  一个槽位的大小是32字节？
+32字节，会尽可能的打包到一个storage槽里，具体规则如下：
+
+在storage槽中第一项是按低位对齐存储（lower-order aligned），意味着是大端序了，因为是按书写顺序。
+
+基本类型存储时仅占用其实际需要的字节。
+
+如果基本类型不能放入某个槽余下的空间，它将被放入下一个槽位。
+
+结构体和数组总是使用一个全新的槽位，并占用整个槽(但在结构体内或数组内的单个项仍遵从上述规则)
+和C分配内存的方式相似
+
+#### 非固定大小 堆栈槽
+
+
+Solidity reserves three 256-bit slots:
+
+0 - 64: scratch space for hashing methods
+64 - 96: currently allocated memory size (aka. free memory pointer)
+
+当Solidity合约被部署了，从一个帐户中调用这个合约，需要输入的数据是需要符合the ABI specification。ABI规范需要参数被填充为多个32字节。内部的函数调用，则使用了不同的给定。
+
+内部调用 - 清理变量(Internals - Cleaning Up Variables)
+
+当一个值小于256位时，在某些情况下剩余的位必须被清除掉。Solidity编译器被设计来清理掉这些残存的字节位，在任何可能受到潜在的残存数据带来的副作用前清理掉它们。比如，在向内存写入一个值前，剩余的字节位需要被清除掉，因为这些内存内容可能被用来计算哈希，或作为消息调用的发送的数据存储。同样的，在向storage中存储，剩余的字节位需要被清理掉，否则这个额外的数值能被程序看到。
+
+另一方面，如果接下来的后述操作不会产生影响，不会主动清理这些字节位。比如，由于任何非0的值在JUMP指令认为是true。我们在不会清理布尔值，如果它并不会作为JUMPI的条件。
+
+在上述设计准则之外，Solidity编译器会在输入数据加载到栈上后清理掉它们。
+
+不同的类型，有不同的无效值的清理规则。
+
+类型	有效值	无效值意味着
+有n的成员枚举类型	0到（n -1)	异常(exception)
+布尔	0或1	1
+有符号整数	sign-extended word	当前静默的包装了结果，以后会以异常的形式抛出来
+有符号整数	高位节是0	当前静默的包装了结果，以后会以异常的形式抛出来

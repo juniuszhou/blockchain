@@ -1,0 +1,9 @@
+online.txt
+
+https://github.com/ethereum/browser-solidity
+
+https://ethereum.github.io/browser-solidity/
+
+# to start solidity browser.
+/home/junius/blockchain/ethereum/browser-solidity
+npm start.

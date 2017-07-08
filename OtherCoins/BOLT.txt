@@ -1,0 +1,4 @@
+BOLT.txt
+
+盲链下轻型交易  隐私支付通道
+https://z.cash/zh/blog/bolt-private-payment-channels.html

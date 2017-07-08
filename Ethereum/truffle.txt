@@ -10,7 +10,7 @@ truffle init
 truffle compile
 
 ## deploy
-truffle deploy / migrate
+truffle migrate
 
 ## start ,  need start testrpc before.
 truffle serve. then truffle start at 8080 port.

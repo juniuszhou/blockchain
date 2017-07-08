@@ -1,0 +1,6 @@
+libraryOnline.txt
+
+## string utils
+https://github.com/Arachnid/solidity-stringutils/blob/master/strings.sol
+
+https://github.com/OpenZeppelin/zeppelin-solidity

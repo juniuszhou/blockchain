@@ -1,0 +1,9 @@
+Lisk.txt
+
+Lisk is a next generation crypto-currency and decentralized application platform, written entirely in JavaScript or nodejs. 
+
+
+
+# chat tools.
+list talk. junius  Junius9808  junius.zhou@gmail.com
+https://lisk.chat/

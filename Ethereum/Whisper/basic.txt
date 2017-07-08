@@ -1,0 +1,11 @@
+basic.txt
+
+https://github.com/ethereum/go-ethereum/wiki/Whisper-Overview
+
+
+
+
+
+
+
+

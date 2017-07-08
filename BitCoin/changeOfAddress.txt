@@ -1,0 +1,16 @@
+changeOfAddress.txt
+
+# to avoid the track of transaction.
+mix 
+
+coinjoin
+
+DASH
+coinjoin. master node to provide coinjoin transaction.
+
+Menero
+passive mixing
+
+Zerocoin
+
+ZeroCash

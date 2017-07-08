@@ -1,0 +1,36 @@
+ethash.txt
+
+http://www.hashcash.org/papers/dagger.html
+
+Hashimoto chooses transactions by doing the following: 
+ 
+hash_output_A = sha256(prev_hash, merkle_root, nonce) 
+for i = 0 to 63 do 
+shifted_A = hash_output_A >> i 
+transaction = shifted_A mod total_transactions 
+txid[i] = get_txid(transaction) << i 
+end for 
+txid_mix = txid[0] ⊕ txid[1] ... ⊕ txid[63] 
+final_output = txid_mix ⊕ (nonce << 192) 
+ 
+The target is then compared with final_output, and smaller values are accepted as proofs. 
+
+hashimoto put the blocks in serials. at first, generate an origin hash.
+the choose 64 Txs according to origin hash's n times left shift.
+the use those 64 Txs as data to generate last hash.
+
+dagger generate the data to build a tree. and left node's value depend on 
+several layer ahead parent node values.
+
+both methods again ASIC and memory protect and IO bound 's concept is.
+the computing depend on the random data in large data set.
+so the computing unit must has RAM. otherwise it very slow if read data from 
+disk or network each time. that's why ASIC use in bitcoin doesn't work for ethash.
+
+
+
+dagger hashimoto is origin name of pow use in ethereum.
+the last version of pow procotol named as ethash.
+
+1. not use contract from block to avoid long-rang attach.
+2. not update hash function each 1000 nonce, since no appropriate implementation.

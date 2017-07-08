@@ -34,6 +34,8 @@ depth 0, status is pending
 depth 1-n  building
 
 
+
+
 # unit
 1比特币（Bitcoins，BTC）  
 

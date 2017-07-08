@@ -1,0 +1,5 @@
+## 
+基于保证金的安全和共识鉴别 (Security-deposit based security and authentication)
+
+http://ethfans.org/posts/introducing-casper-friendly-ghost
+

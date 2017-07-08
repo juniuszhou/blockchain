@@ -1,0 +1,9 @@
+basic.txt
+
+two types of transactions: a sending transaction and a contract creating transaction.
+
+A sending transaction is a standard transaction, containing a receiving address, an ether amount, a data bytearray and some other parameters, and a signature from the private key associated with the sender account.
+
+A contract creating transaction looks like a standard transaction, except the receiving address is blank. 
+
+

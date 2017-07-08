@@ -1,0 +1,12 @@
+## public
+solc generate access function for each public variable.
+
+
+1. value type. always copy value instead copy reference.
+bool, int alias to int256, uint alias to uint256, 
+address 20字节  two method. balance and send.
+
+
+2. reference type.
+bytes string with dynamic size.
+

@@ -1,0 +1,11 @@
+solcUsage.txt
+
+
+after contract was compiled, there is an abi file to define 
+the interface of the contract and a bin file for evm to use.
+bin is similar to assemble code file.
+
+## contract in this folder.
+/home/junius/blockchain/myTruffle/contracts
+
+~/blockchain/myTruffle/contracts$ solc SimpleStorage.sol 

@@ -4,3 +4,5 @@ https://z.cash/zh/
 
 https://z.cash/
 
+# web for zcash explorer
+https://explorer.zcha.in 

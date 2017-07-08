@@ -1,0 +1,44 @@
+
+In this post, we recall the notion of a polynomial, and explain the notion of "blind evaluation" of a polynomial, and how it is implemented using Homomorphic Hiding (HH). (See Part I for an explanation of HH. ) In future posts, we will see that blind evaluation is a central tool in SNARK constructions.
+
+We denote by FpFp the field of size pp; that is, the elements of FpFp are {0,…,p−1}{0,…,p−1} and addition and multiplication are done modpmodp as explained in Part I.
+
+POLYNOMIALS AND LINEAR COMBINATIONS
+
+Recall that a polynomial PP of degree dd over FpFp is an expression of the form
+
+P(X)=a0+a1⋅X+a2⋅X2+…+ad⋅XdP(X)=a0+a1⋅X+a2⋅X2+…+ad⋅Xd
+
+, for some a0,…,ad∈Fp.a0,…,ad∈Fp.
+
+We can evaluate PP at a point s∈Fps∈Fp by substituting ss for XX, and computing the resultant sum
+
+P(s)=a0+a1⋅s+a2⋅s2+…+ad⋅sdP(s)=a0+a1⋅s+a2⋅s2+…+ad⋅sd
+
+For someone that knows P,P, the value P(s)P(s) is a linear combination of the values 1,s,…,sd1,s,…,sd - where linear combination just means "weighted sum", in the case of P(s)P(s) the "weights" are a0,…,ad.a0,…,ad.
+
+In the last post, we saw the HH EE defined by E(x)=gxE(x)=gx where gg was a generator of a group with a hard discrete log problem. We mentioned that this HH "supports addition" in the sense that E(x+y)E(x+y) can be computed from E(x)E(x) and E(y)E(y). We note here that it also "supports linear combinations"; meaning that, given a,b,E(x),E(y),a,b,E(x),E(y), we can compute E(ax+by)E(ax+by). This is simply because
+
+E(ax+by)=gax+by=gax⋅gby=(gx)a⋅(gy)b=E(x)a⋅E(y)b.E(ax+by)=gax+by=gax⋅gby=(gx)a⋅(gy)b=E(x)a⋅E(y)b.
+
+BLIND EVALUATION OF A POLYNOMIAL
+
+Suppose Alice has a polynomial PP of degree dd, and Bob has a point s∈Fps∈Fp that he chose randomly. Bob wishes to learn E(P(s))E(P(s)), i.e., the HH of the evaluation of PP at s.s. Two simple ways to do this are:
+
+Alice sends PP to Bob, and he computes E(P(s))E(P(s)) by himself.
+Bob sends ss to Alice; she computes E(P(s))E(P(s)) and sends it to Bob.
+However, in the blind evaluation problem we want Bob to learn E(P(s))E(P(s)) without learning PP - which precludes the first option; and, most importantly, we don't want Alice to learn ss, which rules out the second [1].
+
+Using HH, we can perform blind evaluation as follows.
+
+Bob sends to Alice the hidings E(1),E(s),…,E(sd).E(1),E(s),…,E(sd).
+Alice computes E(P(s))E(P(s)) from the elements sent in the first step, and sends E(P(s))E(P(s)) to Bob. (Alice can do this since EE supports linear combinations, and P(s)P(s) is a linear combination of 1,s,…,sd.)1,s,…,sd.)
+Note that, as only hidings were sent, neither Alice learned ss [2], nor Bob learned PP.
+
+WHY IS THIS USEFUL?
+
+Subsequent posts will go into more detail as to how blind evaluation is used in SNARKs. The rough intuition is that the verifier has a "correct" polynomial in mind, and wishes to check the prover knows it. Making the prover blindly evaluate their polynomial at a random point not known to them, ensures the prover will give the wrong answer with high probability if their polynomial is not the correct one. This, in turn, relies on the Schwartz-Zippel Lemma stating that "different polynomials are different at most points".
+
+[1]	The main reason we don't want to send PP to Bob, is simply that it is large - (d+1) elements, where, for example, d~2000000 in the current Zcash protocol; this ultimately has to do with the "Succinct" part of SNARKs. It is true that the sequence of hidings Bob is sending to Alice above is just as long, but it will turn out this sequence can be "hard-coded" in the parameters of the system, whereas Alice's message will be different for each SNARK proof.
+[2]	Actually, the hiding property only guarantees ss not being recoverable from E(s)E(s), but here we want to claim it is also not recoverable from the sequence E(s),…,E(sd)E(s),…,E(sd) that potentially contains more information about ss. This follows from the d-power Diffie-Hellman assumption, which is needed in several SNARK security proofs.
+

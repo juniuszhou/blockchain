@@ -1,0 +1,14 @@
+p2pConnection.txt
+
+tcp port 30303. and format is rlp.
+0x22400891 head of tcp.
+
+sub protocol, for message type.
+
+Hello.
+Disconnect.
+Ping
+Pong
+
+Node identity and reputation.  id become public key.
+

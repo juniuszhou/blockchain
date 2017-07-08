@@ -1,0 +1,4 @@
+https://github.com/golemfactory/golem
+
+The aim of the Golem project is to create a global prosumer market for computing power, in which producers may sell spare CPU time of their personal computers and consumers may acquire resources for computation-intensive tasks.
+

@@ -11,3 +11,4 @@ geth account list
 
 # geth upgradedb   //update block format.
 # geth removedb   // remove all data of block
+

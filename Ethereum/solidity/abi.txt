@@ -1,0 +1,7 @@
+abi.txt  application binary interface
+
+http://me.tryblockchain.org/Solidity-abi-abstraction.html
+
+ABI是以太坊的一种合约间调用时的一个消息格式。类似Webservice里的SOAP协议一样；也就是定义操作函数签名，参数编码，返回结果编码等。
+
+不支持合约接口是动态的

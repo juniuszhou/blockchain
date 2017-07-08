@@ -2,6 +2,11 @@
 geth --testnet --fast --cache=512 console
 
 
+# 
+geth --unlock 0 --testnet --rpc --ssh 
+
+
+
 geth console.
 
 net.listening
